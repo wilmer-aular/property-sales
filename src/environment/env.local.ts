@@ -1,6 +1,6 @@
 //Duplicar este archivo y sacarle el nombre example, debe quedar env.local.ts
 
-const mongo = {
+const mongoConfLocal = {
   user: 'admin',
   password: 'admin',
   database: 'propertySales',
@@ -16,4 +16,4 @@ const local = {
   
 };
 const developer = 'wilmer';
-export { mongo, developer, local };
+export { mongoConfLocal, developer, local };

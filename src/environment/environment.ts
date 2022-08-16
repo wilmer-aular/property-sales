@@ -1,7 +1,7 @@
 /* eslint no-undef: "off" */
 /* nodemon Command: npx nodemon */
 const env = process.env.ENVIRONMENT || 'local';
-import { mongo, developer, local } from './env.local';
+import { mongoConfLocal, developer, local } from './env.local';
 
 let folderS3 = 'dev';
 let mongoConf = {
@@ -14,7 +14,7 @@ let mongoConf = {
 
 
 if (env === 'local') {
-  mongoConf = mongo;
+  mongoConf = mongoConfLocal;
 } else if (env === 'dev') {
   mongoConf.database = 'propertySales';
 } else {

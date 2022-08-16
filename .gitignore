@@ -1,4 +1,3 @@
 node_modules/
-src/environment/mongo.ts
-src/environment/local.ts
-dist/
+logs/*
+src/environment/env.local.ts
