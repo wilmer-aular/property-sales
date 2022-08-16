@@ -24,7 +24,7 @@ const Footer = () => {
 
 						<div className="col-sm-4 text-right d-none d-sm-block">
 							<a href="https://www.PropiertiesSell.com" target="blank" >
-								<img alt="Logo" src="img/Best-movers-in-toronto.webp"	style={{maxHeight: "50px", maxWidth: "50px", objectFit: "contain"}}/>
+								<img alt="Logo" src="logo.jpg"	style={{maxHeight: "100px", maxWidth: "100px", objectFit: "contain"}}/>
 							</a>
 						</div>
 					</div>

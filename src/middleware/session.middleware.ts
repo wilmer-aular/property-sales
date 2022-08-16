@@ -21,7 +21,7 @@ class Context implements RequestContext {
   }
 
   static setup(req: any, res: Response, next: () => void) {
-    const session = createNamespace('palmerston-staff');
+    const session = createNamespace('propierties-sell');
     session.run(() => {
       session.set('context', new Context(req));
       next();
