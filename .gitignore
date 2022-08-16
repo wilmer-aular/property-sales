@@ -1,3 +1,5 @@
 node_modules/
 logs/*
 src/environment/env.local.ts
+build/*
+frontend/build/*
