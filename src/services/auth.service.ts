@@ -1,15 +1,30 @@
 import { User, IUser } from "@src/models/mongo/user.model";
 import CrudService from "./crud.service";
 import jwt from "jsonwebtoken";
-import configApp from "@src/environment/index";
 import { passwordEncript, comparePassword } from "@src/utils/auth.util";
+import env from '../environment';
+const { encrypt } = env;
 
+export interface BodyToken {
+  email: string;
+  username?: string;
+}
 export interface IModelUSer {
   userName: string;
   email: string;
   password: string;
-  age: number;
 }
+
+const getDataByToken = async (token: string): Promise<BodyToken> => {
+  return new Promise((success, reject) => {
+    jwt.verify(token, encrypt.accessToken, (err, decoded: any) => {
+      if (err) reject(err);
+      const { email } = decoded;
+      const user: BodyToken = { email };
+      success(user);
+    });
+  });
+};
 
 export class AuthService {
   service: CrudService<IUser>;
@@ -22,7 +37,7 @@ export class AuthService {
       const newUser: IUser = await this.service.create(user);
       const token = await jwt.sign(
         { email: newUser.email, userName: newUser.userName },
-        configApp.secrectKey,
+        encrypt.accessToken,
         {
           expiresIn: 3600,
         }
@@ -39,10 +54,9 @@ export class AuthService {
 
       const comparePwd = await comparePassword(userDb.password, user.password);
       if (!comparePwd) return { message: "Invalid password" };
-
       const token = await jwt.sign(
         { email: user.email },
-        configApp.secrectKey,
+        encrypt.accessToken,
         {
           expiresIn: 3600,
         }
@@ -52,4 +66,23 @@ export class AuthService {
       return { message: "failed to login" };
     }
   }
+  public async authVerify (header: any): Promise<BodyToken> {
+    try {
+      const [type, token] = header.split(' ');
+
+      if (type !== 'Bearer') {
+        throw new Error('Header type invalid');
+      }
+      if (!token) {
+        throw new Error('Invalid token');
+      }
+      const {email}: BodyToken = await getDataByToken(token);
+       const user= await User.findOne({ email });
+       if (!user) throw new Error('Invalid token');
+      return user;
+    } catch (error) {
+      throw new Error('Invalid token');
+    }
+  };
+  
 }

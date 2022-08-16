@@ -10,7 +10,6 @@ export default {
     port: 8001,
     name: "api-propertySales",
   },
-  secrectKey: "propertySales",
   encrypt: {
     accessToken: "PropertySalesStart!",
     refreshTokenSecret: "PropertySalesSecret!",

@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
 import CrudService from "@src/services/crud.service";
 import CrudController from "@src/controllers/crud.controller";
-//import { Context, logRequest } from '@src/middleware';
+import { Context, logRequest, authValidation } from '@src/middleware';
 import { Document } from "mongoose";
 
 export const crudRouter = <
@@ -13,46 +13,46 @@ export const crudRouter = <
   controller: T
 ): void => {
   router.get("/",
-  //[Context.setup, logRequest],
+  [Context.setup, logRequest],
    (req: Request, res: Response) => {
     controller.all(req, res);
   });
   router.get(
     '/filter',
-    //[Context.setup, logRequest],
+    [authValidation, Context.setup, logRequest],
     (req: Request, res: Response) => {
       controller.filter(req, res);
     },
   );
   router.get(
     '/findOne',
-    //[Context.setup, logRequest],
+    [authValidation, Context.setup, logRequest],
     (req: Request, res: Response) => {
       controller.findOne(req, res);
     },
   );
   router.get("/:id",
-  //[Context.setup, logRequest],
+  [authValidation, Context.setup, logRequest],
    (req: Request, res: Response) => {
     controller.find(req, res);
   });
   router.post("/", 
-  //[Context.setup, logRequest],
+  [authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
     controller.create(req, res);
   });
   router.put("/:id", 
-  //[Context.setup, logRequest],
+  [authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
     controller.update(req, res);
   });
   router.delete("/:id", 
-  //[Context.setup, logRequest],
+  [authValidation, Context.setup, logRequest],
    (req: Request, res: Response) => {
     controller.remove(req, res);
   });
   router.post("/upload", 
-  //[Context.setup, logRequest],
+  [authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
     controller.upload(req, res);
   });
