@@ -1,0 +1,4 @@
+node_modules/
+src/environment/mongo.ts
+src/environment/local.ts
+dist/
