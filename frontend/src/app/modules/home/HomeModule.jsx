@@ -1,23 +1,14 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import {connector} from '@src/services';
-import { ProductPendingList } from './products/ProductPendingList';
 
-const productService = connector('product');
-export const HomeModule = () => {
-    const [products, setProducts] = useState([]);
-    const productsPending = useCallback(async ()=> {
-        const productsResponse = await productService.get('/prices-pending');
-        setProducts(productsResponse);
-    }, [setProducts])
+import { ViewProperties } from './properties/ViewProperties';
 
-    useEffect(()=> {
-        productsPending();
-    }, [productsPending])
+export const HomeModule = ({list}) => {
+ 
     return <>
     <Row>
         <Col xl={6}>
-            <ProductPendingList products={products}/>
+            <ViewProperties properties={list}/>
         </Col>
     </Row>
     </>;

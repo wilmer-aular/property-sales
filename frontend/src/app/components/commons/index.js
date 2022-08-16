@@ -8,11 +8,13 @@ import FaIcon from "./FaIcon";
 import Button from "./Button";
 import ModalSave from "./ModalSave";
 import Delete from "./Delete";
+import SlideShow from "./slidechow/SlideShow";
 export * from "./Switch";
 export * from "./MetricsInfo";
 export * from "./CardTabs";
 export * from "./LabelBadge";
 export * from "./InputsForm";
+
 
 export {
   Card,
@@ -25,4 +27,5 @@ export {
   Button,
   ModalSave,
   Delete,
+  SlideShow
 };

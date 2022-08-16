@@ -28,9 +28,9 @@ const Menu = () => {
               <div className="content-header-item">
                 <a className="link-effect font-w700" href="/">
                   <span className="font-size-xl text-dual-primary-dark">
-                    Sys
+                    Property
                   </span>
-                  <span className="font-size-xl text-primary">Worker</span>
+                  <span className="font-size-xl text-primary">Sales</span>
                 </a>
               </div>
             </div>
