@@ -1,8 +1,12 @@
 import { model, Schema, Model } from "mongoose";
 import { Document } from "mongoose";
 
-
+export enum Type {
+  House = "House",
+  Apartments = "Apartments",
+}
 interface IProperty extends Document {
+  type : Type;
   address : string;
   city : string;
   country : string;
@@ -10,9 +14,11 @@ interface IProperty extends Document {
   numberOfRooms: number;
   numberOfBathrooms : number;
   ImgUrl : string;
+  date: Date;
 }
 
 const PropertySchema: Schema = new Schema({
+  type : { type: String, require: true },
   address : { type: String, require: true },
   city : { type: String, require: true },
   country : { type: String, require: true },
@@ -20,6 +26,7 @@ const PropertySchema: Schema = new Schema({
   numberOfRooms: { type: Number, require: true },
   numberOfBathrooms : { type: Number, require: true },
   ImgUrl : { type: String, require: true },
+  date: { type: Date, require: true, default: new Date() },
 });
 
 const Property: Model<IProperty> = model("Property", PropertySchema);

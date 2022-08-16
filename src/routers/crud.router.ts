@@ -19,40 +19,40 @@ export const crudRouter = <
   });
   router.get(
     '/filter',
-    [authValidation, Context.setup, logRequest],
+    //[authValidation, Context.setup, logRequest],
     (req: Request, res: Response) => {
       controller.filter(req, res);
     },
   );
   router.get(
     '/findOne',
-    [authValidation, Context.setup, logRequest],
+   // [authValidation, Context.setup, logRequest],
     (req: Request, res: Response) => {
       controller.findOne(req, res);
     },
   );
   router.get("/:id",
-  [authValidation, Context.setup, logRequest],
+ // [authValidation, Context.setup, logRequest],
    (req: Request, res: Response) => {
     controller.find(req, res);
   });
   router.post("/", 
-  [authValidation, Context.setup, logRequest],
+  //[authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
     controller.create(req, res);
   });
   router.put("/:id", 
-  [authValidation, Context.setup, logRequest],
+  //[authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
     controller.update(req, res);
   });
   router.delete("/:id", 
-  [authValidation, Context.setup, logRequest],
+  //[authValidation, Context.setup, logRequest],
    (req: Request, res: Response) => {
     controller.remove(req, res);
   });
   router.post("/upload", 
-  [authValidation, Context.setup, logRequest],
+  //[authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
     controller.upload(req, res);
   });

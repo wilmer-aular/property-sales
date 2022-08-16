@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { CardTabs } from "@src/components";
-import { WorkersSearch } from "./WorkorsSearch";
-import { WorkersTable } from "./WorkersTable";
+import { PropertiesSearch } from "./PropertiesSearch";
+import { PropertiesTable } from "./PropertiesTable";
 import { useNotifyContent } from "@src/providers/NotifyProvider";
 import { connector } from "@src/services";
-import ModalWorker from "./modal/ModalWorker";
+import ModalProperty from "./modal/ModalProperty";
 
-const { update, create } = connector("worker");
+const { update, create } = connector("property");
 
 export const PropertiesModule = ({ list, handleFilters, filtered }) => {
   const { handleNotify } = useNotifyContent();
   const [show, setShow] = useState(false);
-  const [worker, setWorker] = useState({});
+  const [property, setProperty] = useState({});
   const handleShow = () => setShow(true);
 
   const handleClose = () => {
     setShow(false);
-    setWorker({});
+    setProperty({});
   };
   const onSave = async (value) => {
     const { id } = value;
@@ -28,42 +28,42 @@ export const PropertiesModule = ({ list, handleFilters, filtered }) => {
       return { success: true };
     } catch (err) {
       console.error(err);
-      handleNotify("error", "Ocurrio un Error");
+      handleNotify("error", "Task dailed");
     } finally {
       handleFilters(null);
     }
   };
 
   const handleDetail = (id) => {
-    const worker = list.find((i) => i.id === id);
-    setWorker({ ...worker });
+    const property = list.find((i) => i._id === id);
+    setProperty({ ...property });
     handleShow(true);
   };
 
   const handleSearch = (filters) => {
     handleFilters(filters);
   };
-  const propsModal = { show, worker, handleShow, handleClose, onSave };
+  const propsModal = { show, property, handleShow, handleClose, onSave };
 
   const tools = (
     <>
       {" "}
-      <ModalWorker {...propsModal} />
+      <ModalProperty {...propsModal} />
     </>
   );
 
   return (
     <>
-      <WorkersSearch handleSearch={handleSearch} filtered={filtered} />
+      <PropertiesSearch handleSearch={handleSearch} filtered={filtered} />
       <CardTabs
-        header="Lista de trabajadores"
-        subHeader={`Cantidad de trabajadores: (${list.length})`}
+        header="Property list"
+        subHeader={`Number of properties: (${list.length})`}
         classHeader="card-header border-0"
         className="text-muted font-weight-bold font-size-sm"
         tools={tools}
       >
-        <WorkersTable
-          workers={list}
+        <PropertiesTable
+          properties={list}
           handleDetail={handleDetail}
           refresh={handleFilters}
         />
