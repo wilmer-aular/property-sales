@@ -1,22 +1,12 @@
 export const mainMenu = [
   {
-    url: "/inicio",
+    url: "/home",
     icon: "si si-home",
-    label: "Inicio",
+    label: "Home",
   },
   {
-    url: "/trabajadores",
+    url: "/properties",
     icon: "fa fa-list",
-    label: "Trabajadores",
-  },
-  {
-    url: "/control_de_horas",
-    icon: "fas fa-hourglass-start",
-    label: "Control de Horas",
-  },
-  {
-    url: "/configuration",
-    icon: "si si-settings",
-    label: "Configuración",
+    label: "Properties",
   },
 ];

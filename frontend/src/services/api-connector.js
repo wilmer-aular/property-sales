@@ -1,7 +1,7 @@
 import axios from "axios";
 //import store from "../redux/store";
 
-const baseURL = "http://localhost:7000/api";
+const baseURL = "http://localhost:8001/api";
 
 const conn = () => {
   return axios.create({

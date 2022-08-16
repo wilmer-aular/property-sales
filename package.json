@@ -48,7 +48,8 @@
   },
   "scripts": {
     "dev": "ts-node ./index.ts",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "all": "cd frontend && npm run build && npm run move && cd .. && npx ts-node index.ts"
   },
   "author": "",
   "license": "ISC"

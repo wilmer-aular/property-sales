@@ -1,6 +1,5 @@
-const express = require("express");
 import bodyParser from "body-parser";
-import { Express } from "express";
+import express, { Express } from "express";
 import morgan from "morgan";
 import apiRouter from "./routers/index.";
 import cors from "cors";
@@ -20,10 +19,10 @@ export class Server {
     this.app.use(fileUpload());
     this.app.use(morgan("dev"));
     this.app.use("/api", apiRouter);
-    this.app.use(express.static(path.resolve('./') + '/build/frontend'));
+    this.app.use(express.static(path.resolve('./') + '/build'));
 
     this.app.get('*', (req, res) => {
-      res.sendFile(path.resolve('./') + '/build/frontend/index.html');
+      res.sendFile(path.resolve('./') + '/build/index.html');
     });
 
     mongoConnect();

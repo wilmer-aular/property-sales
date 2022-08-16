@@ -8,7 +8,7 @@ import ModalWorker from "./modal/ModalWorker";
 
 const { update, create } = connector("worker");
 
-export const WorkersModule = ({ list, handleFilters, filtered }) => {
+export const PropertiesModule = ({ list, handleFilters, filtered }) => {
   const { handleNotify } = useNotifyContent();
   const [show, setShow] = useState(false);
   const [worker, setWorker] = useState({});

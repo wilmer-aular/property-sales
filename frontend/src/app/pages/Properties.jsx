@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { WorkersModule } from "../modules/workers";
+import { PropertiesModule } from "../modules/properties";
 import { connector } from "@src/services";
 import { useNotifyContent } from "@src/providers/NotifyProvider";
 
-const { all, filter } = connector("worker");
+const { all, filter } = connector("property");
 
-export const Workers = () => {
+export const Properties = () => {
   const { handleNotify } = useNotifyContent();
   const [filtered, setFiltered] = useState({});
   const [list, setList] = useState([]);
@@ -35,5 +35,5 @@ export const Workers = () => {
 
   const props = { list, handleFilters, filtered };
 
-  return <WorkersModule {...props} />;
+  return <PropertiesModule {...props} />;
 };
