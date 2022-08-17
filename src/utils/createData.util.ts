@@ -14,11 +14,11 @@ const createData = async () => {
     if(!userDb){
         userDb = await outhService.signUp(user);
     }
+    
     const properties = await propertyService.all();
-
     if(!properties.length){
         const newProperties = listProperties.map(i => {
-            i.userId = userDb._id;
+            i.userId = userDb._id.toString();
             return i;
         })
         await propertyService.bulkCreate(newProperties);

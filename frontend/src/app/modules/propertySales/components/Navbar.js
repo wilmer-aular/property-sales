@@ -18,7 +18,7 @@ const Navbar = () => {
 								<ul className="menu">
 									<li><a className="inner-link" href="#properties"> Properties</a></li>
 									<li><a className="inner-link" href="#testimonials">	Testimonials</a></li>
-									<li className="has-dropdown"><a href="#home">post</a>
+									<li className="has-dropdown"><a href="#home">Post</a>
 										<ul className="subnav">
 											<li className="has-dropdown"><a target="blank" href="/auth">	Login</a></li>
 											<li><a  target="blank" href="/register">Register</a></li>

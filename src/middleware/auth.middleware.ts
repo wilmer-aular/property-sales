@@ -9,9 +9,7 @@ const authValidation = async (
   const authHeader = req.headers['authorization'];
   try {
     const service = new AuthService();
-    const user = await service.authVerify(authHeader);
-    console.info({user});
-    //req['user'] = user;
+    await service.authVerify(authHeader);
     next();
   } catch (error) {
     res.status(401);

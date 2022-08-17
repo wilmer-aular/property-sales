@@ -10,7 +10,7 @@ export const PropertiesTable = ({ properties, handleDetail, refresh }) => {
 
   const onDelete = async (id) => {
    await remove(id)
-      refresh(null);
+      refresh({});
     return {success: true};
   };
 
