@@ -72,7 +72,7 @@ const propsModal = { show, property, handleShow, handleClose };
 								</>
 							</div>
 							<br/>
-							<h5>{i.type} in {i.country} <strong>{i.city}</strong></h5>
+							<h5 style={{fontSize: 'inherit'}}><strong>{i.type}</strong> in {i.country}, {i.city}.</h5>
 						</div>
 						))
 					}
