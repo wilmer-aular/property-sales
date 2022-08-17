@@ -2,6 +2,8 @@ import { Model, Document } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { saveImage, IFileResponse } from "./file.service";
 
+
+
 class CrudService<T extends Document> {
   constructor(readonly model: Model<T>) {}
 
@@ -26,7 +28,26 @@ class CrudService<T extends Document> {
       new: true,
     });
   }
-  async find(query: any): Promise<any> {
+  async find(filters: any, field: string = 'price'): Promise<any> {
+    const query = { ...filters };
+    if (filters) {
+      if (filters.priceFrom || filters.PriceTo) {
+        delete query.priceFrom;
+        delete query.priceTo;
+        const { priceFrom: start, priceTo: end } = filters;
+        query[field] =  {$gte: Number(start), $lte: Number(end)};
+      }
+    
+      const keysLike = Object.keys(filters).filter(k => k.includes('like_'));
+      if (keysLike.length) {
+        keysLike.forEach(k => {
+          query[k.replace('like_', '')] = {
+            $regex: '.*' + filters[k] + '.*',
+          };
+          delete query[k];
+        });
+      }
+    }
     return this.model
       .find(query)
       .sort({ createdDate: -1 })

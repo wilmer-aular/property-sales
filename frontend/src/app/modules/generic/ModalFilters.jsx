@@ -58,9 +58,9 @@ const ModalFilters = ({ show, handleShow, handleClose, handleSearch, filters, se
               <InputGroup className="mb-3">
                 <Form.Control
                   type="number"
-                  onChange={(e) => handleRegister("price", e)}
+                  onChange={(e) => handleRegister("priceFrom", e)}
                   defaultValue={filters?.priceFrom ?? ""}
-                  placeholder="Price"
+                  placeholder="Price from"
                 />
               </InputGroup>
             </Col>
@@ -69,9 +69,9 @@ const ModalFilters = ({ show, handleShow, handleClose, handleSearch, filters, se
               <InputGroup className="mb-3">
                 <Form.Control
                   type="number"
-                  onChange={(e) => handleRegister("price", e)}
-                  defaultValue={filters?.priceUp ?? ""}
-                  placeholder="Price"
+                  onChange={(e) => handleRegister("priceTo", e)}
+                  defaultValue={filters?.priceTo ?? ""}
+                  placeholder="Price to"
                 />
               </InputGroup>
             </Col>

@@ -23,15 +23,27 @@ const handleDetail = (id) => {
 	if(list.length){
 		let countHome = 0;
 		let countApart = 0;
+		let countOffice = 0;
+		let countTerrain = 0;
 		const entities = list.map((i) => {
 			if(i.type === 'House'){
 				if(countHome === 33) countHome = 0;
 				i.imgUrl = `media/images/${i.type}/${countHome}.jpg`;
 				countHome += 1;
-			}else {
+			}else if (i.type === 'Apartments') {
 				if(countApart === 33) countApart = 0;
 				i.imgUrl = `media/images/${i.type}/${countApart}.jpg`;
 				countApart += 1;
+			}
+			else if (i.type === 'Office') {
+				if(countOffice === 33) countOffice = 0;
+				i.imgUrl = `media/images/${i.type}/${countOffice}.jpg`;
+				countOffice += 1;
+			}
+			else {
+				if(countTerrain === 33) countTerrain = 0;
+				i.imgUrl = `media/images/${i.type}/${countTerrain}.jpg`;
+				countTerrain += 1;
 			}
 			return i;
 		})
@@ -67,18 +79,20 @@ const propsModal = { show, property, handleShow, handleClose };
 								<div className="text">
 								<div  className="innerBorder" style={{paddingTop: "18%"}}>
 											<div className="modal-video-container">
-												<span onClick={()=>handleDetail(i._id)} style={{color: 'white', fontSize:'30px', cursor:"pointer"}}>DETAIL</span>
+												<span onClick={()=>handleDetail(i._id)} style={{color: 'white', fontSize:'30px', cursor:"pointer"}}>SEE DETAIL</span>
 											</div>
 										</div>
 								</div>
 								</>
 							</div>
-							<br/>
-							<h5 style={{fontSize: 'inherit'}}><strong>{i.type}</strong> in {i.country}, {i.city}.</h5>
+							<div onClick={()=>handleDetail(i._id)}>
+								<h5  style={{fontSize: 'inherit', cursor: "pointer"}}><strong>{i.type}</strong> in {i.country}, {i.city}.</h5>
+								<span style={{fontSize: 'inherit', cursor: "pointer"}}>$ {i.price}.</span>
+							</div>
+							
 						</div>
 						))
 					}
-						
 					</div>
 				</div>
 			</section>

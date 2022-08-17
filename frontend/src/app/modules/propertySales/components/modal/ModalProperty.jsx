@@ -5,18 +5,21 @@ import {  ModalSave } from "@src/components";
 const ModalProperty = ({ property, show, handleShow, handleClose }) => {
   const propsModal = { show, handleShow, handleClose };
   
- 
+ const adviseMe = () => {
+  handleClose();
+ }
+
   return (
     <>
       <ModalSave
         size="lg"
-        withoutButtonSave={true}
+        onSave={()=> adviseMe()}
         title="Property information"
         variant="primary"
         deleteText="Close"
         variantDelete="danger"
-        titleButton=" Agregar Nuevo?"
-        buttonText=" Agregar Nuevo"
+        titleButton=" Advise me?"
+        saveText="Advise me"
         variantButtom="default"
         classButtom={" btn-hover-primary btn-primary btn-sm"}
         {...propsModal}
