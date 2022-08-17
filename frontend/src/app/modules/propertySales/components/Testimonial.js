@@ -1,20 +1,6 @@
 import React from "react";
 import { SlideShow } from "@src/components";
-
-const testimonial = [
-	{
-		note :"xxxxxxxxxx",
-		name : "wilmeraular"
-	},
-	{
-		note :"xxxxxxxxxx",
-		name : "wilmeraular"
-	},
-	{
-		note :"xxxxxxxxxx",
-		name : "wilmeraular"
-	}
-]
+import { testimonial } from './util'
 
 const Testimonial = () => {
   return (
@@ -30,7 +16,7 @@ const Testimonial = () => {
 							<div className="col-md-1 col-md-offset-1 col-sm-12 text-center"></div>
 							<div className="col-md-10 col-md-offset-1 col-sm-12 text-center">
 								<h5 style={{fontFamily: "inherit"}}>{i.note}</h5>
-								<img alt="Rachel Subic" src="https://thumbs.dreamstime.com/b/hombre-icono-del-avatar-usuario-muestra-s-mbolo-perfil-vector-de-la-persona-plano-s%C3%ADmbolo-%C3%A2%E2%82%AC-para-acci%C3%B3n-145781760.jpg"	draggable="false" className="testimonialImage"/>
+								<img alt="Rachel Subic" src={i.imgUrl}	draggable="false" className="testimonialImage"/>
 								<div>
 									<p>{i.name}</p>
 								</div>

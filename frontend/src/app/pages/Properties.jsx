@@ -14,8 +14,8 @@ export const Properties = () => {
     async (filters = null) => {
       const promise = filters ? filter(filters) : all();
       try {
-        const workers = await promise;
-        setList(workers);
+        const properties = await promise;
+        setList(properties);
       } catch (err) {
         console.error(err);
         handleNotify("error", "Ocurrio un error");

@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ModalProperty from "./modal/ModalProperty";
-
-const LisProperties = ({list}) => {
-const [counterHome, setCounterHome] = useState(0);
-const [counterApart, setCounterApart] = useState(0);
+import {PropertiesSearch} from "../../properties/PropertiesSearch"
+const LisProperties = ({list, handleFilters, filtered}) => {
+const [entities, setEntities] = useState([])
 const [show, setShow] = useState(false);
 const [property, setProperty] = useState({});
 const handleShow = () => setShow(true);
@@ -14,24 +13,30 @@ const handleClose = () => {
 };
 
 const handleDetail = (id) => {
-    const property = list.find((i) => i._id === id);
+    const property = entities.find((i) => i._id === id);
     setProperty({ ...property });
     handleShow(true);
   };
-const getURLImage = (type) => {
-	if(type === 'House'){
-		//if(counterHome === 33) setCounterHome(0)
-		const counter = counterHome + 1;
-		console.log({counter})
-		//setCounterHome(counter + 1);
-	
-		return `/${type}/${counterHome}.jpg`
+
+  useEffect(()=>{
+	if(list.length){
+		let countHome = 0;
+		let countApart = 0;
+		const entities = list.map((i) => {
+			if(i.type === 'House'){
+				if(countHome === 33) countHome = 0;
+				i.imgUrl = `media/images/${i.type}/${countHome}.jpg`;
+				countHome += 1;
+			}else {
+				if(countApart === 33) countApart = 0;
+				i.imgUrl = `media/images/${i.type}/${countApart}.jpg`;
+				countApart += 1;
+			}
+			return i;
+		})
+		setEntities(entities);
 	}
-	//if(counterApart === 33) setCounterApart(0)
-	const counter = counterApart + 1;
-	//setCounterApart(counter);
-	return `/${type}/${counter}.jpg`
-}
+  },[list, setEntities])
 
 const propsModal = { show, property, handleShow, handleClose };
   return (
@@ -47,13 +52,14 @@ const propsModal = { show, property, handleShow, handleClose };
 							</p>	
 						</div>
 					</div>
+					<PropertiesSearch handleSearch={handleFilters} filtered={filtered}/>
 					<div className="row">
 					{
-					list?.map((i, index) => (
+						entities?.map((i, index) => (
 						<div key={index} className="col-sm-4 text-center feature">
 							<div className="wrapper">
 								<>
-								<div className="hover" style={{backgroundImage: `url(media/images${getURLImage(i.type)})`,paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%"}}>
+								<div className="hover" style={{backgroundImage: `url(${i.imgUrl})`,paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%"}}>
 								</div>
 								<div className="text">
 								<div  className="innerBorder" style={{paddingTop: "18%"}}>

@@ -29,7 +29,7 @@ const ModalProperty = ({ property, show, handleShow, handleClose }) => {
 						<div className="col-md-6">
 							<div className="wrapper">
 							
-								<div className="hover" style={{backgroundImage: "url('media/images/House/0.jpg')",paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%", maxHeight: "100vh"}}>
+								<div className="hover" style={{backgroundImage: `url(${property.imgUrl})`,paddingTop: "55%", backgroundPosition: "top center", backgroundSize: "100%", maxHeight: "100vh"}}>
 								</div>
 							</div>
 						</div>

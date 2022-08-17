@@ -21,10 +21,10 @@ export function Routes() {
   return (
     <>
     {
-      location.pathname === "/property_sales" ?
+      location.pathname === "/properties_sell" ?
       (
         <Route
-          path="/property_sales"
+          path="/properties_sell"
           component={PropertySales}
         />)
         :

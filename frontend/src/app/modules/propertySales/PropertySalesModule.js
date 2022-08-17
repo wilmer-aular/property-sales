@@ -9,7 +9,8 @@ import "./css/sofar.css";
 import "./css/theme.css";
 
 
-const PropertySalesModule = ({ list }) => {
+const PropertySalesModule = ({ list, handleFilters, filtered }) => {
+	const props = { list, handleFilters, filtered };
   return (
     <>
 <div className="estimateNew">
@@ -17,7 +18,7 @@ const PropertySalesModule = ({ list }) => {
 			<Navbar  />
 		<div className="main-container">
 			{/* LIST */}
-			<LisProperties list={list}/>
+			<LisProperties {...props}/>
 			{/* TESTIMONIALS*/}
 			<Testimonial /> 
 			{/* FOOTER */}

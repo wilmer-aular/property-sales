@@ -7,4 +7,8 @@ export const columnsProperty = [
         dataField: 'stock',
         text: 'STOCK'
     },
+    {
+        dataField: 'assessment',
+        text: 'ASSESSMENT'
+    },
 ];
