@@ -11,8 +11,3 @@ export const toPropertyMap = (i) => {
   };
 };
 
-export const listType = [
-  { key: "House", value: "House" },
-  { key: "Apartments", value: "Apartments" },
-  { key: "Office", value: "Office" },
-];

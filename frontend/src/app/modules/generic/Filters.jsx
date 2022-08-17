@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Row, Col, InputGroup } from "react-bootstrap";
-import {listType} from "../properties/util"
+import {listType} from "../util"
 import ModalFilters from "./ModalFilters"
 
 export const Filters = ({ handleSearch, filtered }) => {

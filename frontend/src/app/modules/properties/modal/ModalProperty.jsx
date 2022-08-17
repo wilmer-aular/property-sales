@@ -3,7 +3,7 @@ import { GeneriRegister, ModalSave, TypeSeletRegister } from "@src/components";
 import { useForm } from "react-hook-form";
 import { Col, Form, Row } from "react-bootstrap";
 import { required,} from "@src/helpers/forms-helper";
-import { listType } from "../util"
+import { listType } from "../../util"
 
 const ModalProperty = ({ property, show, handleShow, handleClose, onSave }) => {
   const propsModal = { show, handleShow, handleClose };

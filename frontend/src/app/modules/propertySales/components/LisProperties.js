@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ModalProperty from "./modal/ModalProperty";
 import {Filters} from "../../generic/Filters"
-
+import {getListWithImage} from "../../util"
 const LisProperties = ({list, handleFilters, filtered}) => {
 const [entities, setEntities] = useState([])
 const [show, setShow] = useState(false);
@@ -21,27 +21,7 @@ const handleDetail = (id) => {
 
   useEffect(()=>{
 	if(list.length){
-		let countHome = 0;
-		let countApart = 0;
-		let countOffice = 0;
-		const entities = list.map((i) => {
-			if(i.type === 'House'){
-				if(countHome === 33) countHome = 0;
-				i.imgUrl = `media/images/${i.type}/${countHome}.jpg`;
-				countHome += 1;
-			}else if (i.type === 'Apartments') {
-				if(countApart === 33) countApart = 0;
-				i.imgUrl = `media/images/${i.type}/${countApart}.jpg`;
-				countApart += 1;
-			}
-			else {
-				if(countOffice === 5) countOffice = 0;
-				i.imgUrl = `media/images/${i.type}/${countOffice}.jpg`;
-				countOffice += 1;
-			}
-			return i;
-		})
-		setEntities(entities);
+		setEntities(getListWithImage(list));
 	}else {
 		setEntities([]);
 	}
@@ -64,6 +44,7 @@ const propsModal = { show, property, handleShow, handleClose };
 					<Filters handleSearch={handleFilters} filtered={filtered}/>
 					<div className="row">
 					{
+						entities.length ? 
 						entities?.map((i, index) => (
 						<div key={index} className="col-sm-4 text-center feature">
 							<div className="wrapper">
@@ -85,7 +66,11 @@ const propsModal = { show, property, handleShow, handleClose };
 							</div>
 							
 						</div>
-						))
+						)) : (
+							<div className="col-sm-12 text-center feature">
+								<h4 style={{color: "#898585"}}>No data to display</h4>
+							</div>
+						)
 					}
 					</div>
 				</div>

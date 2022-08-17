@@ -1,18 +1,27 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-import { ListPagination, Button, Delete } from "@src/components";
+import { ListPagination, Button, Delete, Columns } from "@src/components";
 import { connector } from "@src/services";
 import { toPropertyMap } from "./util";
-
+import {getListWithImage} from "../util"
 const { remove } = connector("property");
 
 export const PropertiesTable = ({ properties, handleDetail, refresh }) => {
+  const [entities, setEntities] = useState([])
 
   const onDelete = async (id) => {
    await remove(id)
       refresh({});
     return {success: true};
   };
+
+  useEffect(()=>{
+    if(properties.length){
+      setEntities(getListWithImage(properties));
+    }else {
+      setEntities([]);
+    }
+    },[properties, setEntities])
 
   const ActionColum = (cell) => (
     <>
@@ -35,12 +44,19 @@ export const PropertiesTable = ({ properties, handleDetail, refresh }) => {
   );
   const columnsProducts = [
     {
+      dataField: "imgUrl",
+      text: "IMAGE",
+      formatter: (cell) => {
+        return Columns.ColumnImage(cell);
+      },
+    },
+    {
       dataField: "type",
       text: "TYPE",
     },
     {
       dataField: "country",
-      text: "COUNTY",
+      text: "COUNTRY",
     },
     {
       dataField: "city",
@@ -73,7 +89,7 @@ export const PropertiesTable = ({ properties, handleDetail, refresh }) => {
     <>
       <ListPagination
         columns={columnsProducts}
-        list={properties?.map(toPropertyMap) ?? []}
+        list={entities?.map(toPropertyMap) ?? []}
       />
     </>
   );

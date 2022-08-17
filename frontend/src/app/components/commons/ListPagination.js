@@ -42,7 +42,16 @@ const ListPagination = ({
 
   return (
     <>
-      <BootstrapTable
+    {!list.length ? (
+      <div
+        role="alert"
+        className={`alert alert-warning py-1 text-center text-secondary mx-10 `}
+      >
+        No data to display
+      </div>
+      ) : (
+      <>
+          <BootstrapTable
         wrapperClasses="table-responsive"
         classes={classTable}
         bootstrap4
@@ -64,6 +73,8 @@ const ListPagination = ({
             disabled={currentPage >= separated.length}
           ></Button>
         </div>
+      )}
+      </>
       )}
     </>
   );

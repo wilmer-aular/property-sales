@@ -293,6 +293,18 @@ export const DualTitleAndSubTitleColumn = (
   </>
 );
 
+export const ColumnImage = ( img ) => (
+  <>
+    <span>
+        {img && (
+          <div >
+            <img style={{width: "100%", maxWidth : "40px" , height : "32px"}} src={img} alt="" />
+          </div>
+        )}
+    </span>
+  </>
+);
+
 export const ImageColumn = (
   cellContent,
   titleClass,

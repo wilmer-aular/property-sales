@@ -6,7 +6,7 @@ const Menu = () => {
   const { setShowMenu } = useLayoutContent();
   return (
     <>
-      <nav id="sidebar">
+      <nav id="sidebar" onClick={() => setShowMenu(false)}>
         <div className="sidebar-content">
           <div className="content-header content-header-fullrow px-15">
             <div className="content-header-section sidebar-mini-visible-b">

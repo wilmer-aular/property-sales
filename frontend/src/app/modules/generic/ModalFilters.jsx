@@ -1,7 +1,7 @@
 import React from "react";
 import {  ModalSave } from "@src/components";
 import { Form, Row, Col, InputGroup } from "react-bootstrap";
-import {listType} from "../properties/util"
+import {listType} from "../util"
 
 const ModalFilters = ({ show, handleShow, handleClose, handleSearch, filters, setFilters }) => {
   const propsModal = { show, handleShow, handleClose };
