@@ -40,7 +40,7 @@ Ingrese a la carpeta frontend con `cd frontend`
 
 Para acceder y administrar sus propiedades acceda por la barra de navegacion `Post`
 
-valla a login y acceda con: 
+vaya a login y acceda con: 
 
 Ya hay un usuario previo creado con propiedades
 
