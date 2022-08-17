@@ -8,7 +8,7 @@ import ModalProperty from "./modal/ModalProperty";
 
 const { update, create } = connector("property");
 
-export const PropertiesModule = ({ list, handleFilters, filtered }) => {
+export const PropertiesModule = ({ list, handleFilters, filtered, userId }) => {
   const { handleNotify } = useNotifyContent();
   const [show, setShow] = useState(false);
   const [property, setProperty] = useState({});
@@ -20,6 +20,7 @@ export const PropertiesModule = ({ list, handleFilters, filtered }) => {
   };
   const onSave = async (value) => {
     const { id } = value;
+    value.userId = userId;
     const promise = id ? update(id, value) : create(value);
     try {
       await promise;
@@ -30,7 +31,7 @@ export const PropertiesModule = ({ list, handleFilters, filtered }) => {
       console.error(err);
       handleNotify("error", "Task dailed");
     } finally {
-      handleFilters(null);
+      handleFilters({});
     }
   };
 

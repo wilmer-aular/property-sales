@@ -38,11 +38,9 @@ export class AuthService {
       const token = await jwt.sign(
         { email: newUser.email, userName: newUser.userName },
         encrypt.accessToken,
-        {
-          expiresIn: 3600,
-        }
       );
-      return { token };
+      const userDb = await this.service.findOne({email: newUser.email});
+      return {...userDb, token };
     } catch (err) {
       return { message: "error when registering user" };
     }
@@ -57,11 +55,8 @@ export class AuthService {
       const token = await jwt.sign(
         { email: user.email },
         encrypt.accessToken,
-        {
-          expiresIn: 3600,
-        }
       );
-      return { token };
+      return {...userDb, token };
     } catch (err) {
       return { message: "failed to login" };
     }

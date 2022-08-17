@@ -9,11 +9,11 @@ const router = Router();
 
 const supplyRouter = (router: Router) => {
   const controller = new PropertyController();
-
-  router.get('/viewStock', 
+  
+  router.get('/forUser/:userId', 
   //[authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
-    controller.viewStock(req, res);
+    controller.forUser(req, res);
   });
  
 

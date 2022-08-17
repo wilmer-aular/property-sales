@@ -5,6 +5,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { signUp } from "@src/services/auth.service";
 import { useNotifyContent } from "@src/providers/NotifyProvider";
 import { required, emailFormat } from "@src/helpers/forms-helper";
+import { setUser } from "@src/services";
 
 export const SignUp = () => {
   const { handleNotify } = useNotifyContent();
@@ -19,20 +20,22 @@ export const SignUp = () => {
   const onSave = async (value) => {
     const { password, confirmpassword } = value;
     if (password !== confirmpassword) {
-      handleNotify("contraseñas no coinsiden", "warn");
+      handleNotify("passwords do not match", "warn");
       setValue("password", "");
       setValue("confirmpassword", "");
       return;
     }
+
     delete value.confirmpassword;
     try {
-      const token = await signUp(value);
-
-      console.info(token);
+       const user = await signUp(value);
+      setUser(user);
+      console.log({user});
+      window.location.href = `/properties/${user._id}`;
       handleNotify();
     } catch (err) {
       console.error(err);
-      handleNotify("Ocurrio un Error", "error");
+      handleNotify("Task Error", "error");
     }
   };
 
@@ -46,9 +49,9 @@ export const SignUp = () => {
         <div className="bg-gd-emerald">
           <div className="hero-static content content-full bg-body-extra-light">
             <div className="py-4 px-1 text-center mb-4">
-              <h1 className="h3 fw-bold mt-5 mb-2">Crear Nuevo Usuario</h1>
+              <h1 className="h3 fw-bold mt-5 mb-2">Create new user</h1>
               <h2 className="h5 fw-medium text-muted mb-0">
-                Por favor, añada sus datos...
+              Please, add your details...
               </h2>
             </div>
             <div className="row justify-content-center px-1">
@@ -60,7 +63,7 @@ export const SignUp = () => {
                         "userName",
                         handleRegister("userName", required),
                         errors.userName,
-                        "Nombre de Usuario *",
+                        "Username *",
                         null,
                         "text"
                       )}
@@ -73,7 +76,7 @@ export const SignUp = () => {
                           ...emailFormat,
                         }),
                         errors.email,
-                        "Dirección de correo electrónico *",
+                        "Email address *",
                         null,
                         "email"
                       )}
@@ -83,7 +86,7 @@ export const SignUp = () => {
                         "password",
                         handleRegister("password", required),
                         errors.password,
-                        "Contraseña * ",
+                        "Password * ",
                         null,
                         "password"
                       )}
@@ -93,7 +96,7 @@ export const SignUp = () => {
                         "confirmpassword",
                         handleRegister("confirmpassword", required),
                         errors.confirmpassword,
-                        "Confirmar Contraseña * ",
+                        "Confirm Password * ",
                         null,
                         "password"
                       )}
@@ -104,26 +107,25 @@ export const SignUp = () => {
                           <Button
                             title="Editar?"
                             className="btn btn-lg btn-alt-primary w-100 py-3 "
-                            // onClick={handleSubmit(onSave)}
+                             onClick={handleSubmit(onSave)}
                           >
-                            Inscribirse
+                            To subscribe
                           </Button>
                         </Col>
-                        <Col xs={6} className="pr-1">
-                          <Button
-                            title="Editar?"
-                            className="btn btn-default  btn-hover-secondary btn-secondary btn-sm w-100"
-                            onClick={handleSubmit(onSave)}
-                          >
-                            Registrar
-                          </Button>
-                        </Col>
-                        <Col xs={6} className="pl-1">
+                        <Col xs={6} >
                           <a
                             className="btn btn-default font-weight-bolder btn-hover-secondary btn-secondary btn-sm w-100"
                             href="/"
                           >
-                            Iniciar Sesión
+                            See properties
+                          </a>
+                        </Col>
+                        <Col xs={6}>
+                          <a
+                            className="btn btn-default font-weight-bolder btn-hover-secondary btn-secondary btn-sm w-100"
+                            href="/auth"
+                          >
+                            Login
                           </a>
                         </Col>
                       </Row>

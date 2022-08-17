@@ -1,19 +1,20 @@
 import { Request, Response, Router } from "express";
 import { AuthController } from "@src/controllers/auth.controller";
+import { Context, logRequest } from '@src/middleware';
 
 const router = Router();
 
 router.post(
-  "/login",
-  // [Context.setup, logRequest],
+  "/signin",
+   [Context.setup, logRequest],
   (req: Request, res: Response) => {
     const loginController = new AuthController();
     loginController.login(req, res);
   }
 );
 router.post(
-  "/signUp",
-  // [Context.setup, logRequest],
+  "/signup",
+   [Context.setup, logRequest],
   (req: Request, res: Response) => {
     const loginController = new AuthController();
     loginController.signUp(req, res);

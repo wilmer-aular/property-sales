@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { Form, Row, Col, InputGroup, Button } from "react-bootstrap";
-import { Card } from "@src/components";
-import {listType} from "./util"
+import React, {useState} from "react";
+import {  ModalSave } from "@src/components";
+import { Form, Row, Col, InputGroup } from "react-bootstrap";
+import {listType} from "../../../properties/util"
 
-export const PropertiesSearch = ({ handleSearch, filtered }) => {
-  const [filters, setFilters] = useState({});
+const ModalFilters = ({ filter, show, handleShow, handleClose, handleSearch, filtered }) => {
+    const [filters, setFilters] = useState({});
+  const propsModal = { show, handleShow, handleClose };
+  
+ const onSearch = () =>{
 
-  const handleRegister = (type, e) => {
-    let filter = e.target.value ? { [type]: e.target.value } : {};
-    if (e.target.value === "") delete filters[type];
-    setFilters({ ...filters, ...filter });
-  };
-
-  const reset = () => {
-    setFilters({});
-    handleSearch({});
-  };
-
-  useEffect(() => {}, [filters, filtered]);
+ }
   return (
     <>
-      <Card>
+      <ModalSave
+         onSave={onSearch}
+        size="lg"
+        iconHeader="sync"
+        title="Property information"
+        variant="primary"
+        deleteText="Close"
+        variantDelete="danger"
+        titleButton=" Agregar Nuevo?"
+        buttonText=" Agregar Nuevo"
+        variantButtom="default"
+        classButtom={" btn-hover-primary btn-primary btn-sm"}
+        {...propsModal}
+      >
+        <>
         <Form>
           <Row>
           <Col xl={2}>
@@ -64,7 +70,7 @@ export const PropertiesSearch = ({ handleSearch, filtered }) => {
                 />
               </InputGroup>
             </Col>
-            <Col xl={1}>
+            <Col xl={2}>
               <label className="mt-2">Price</label>
               <InputGroup className="mb-3">
                 <Form.Control
@@ -75,7 +81,29 @@ export const PropertiesSearch = ({ handleSearch, filtered }) => {
                 />
               </InputGroup>
             </Col>
-            <Col xl={3} style={{marginTop: "16px"}}>
+            <Col xl={2}>
+              <label className="mt-2">N° Bedrooms</label>
+              <InputGroup className="mb-3">
+                <Form.Control
+                  type="number"
+                  onChange={(e) => handleRegister("numberOfRooms", e)}
+                  defaultValue={filters?.numberOfBathrooms ?? ""}
+                  placeholder="Bedrooms"
+                />
+              </InputGroup>
+            </Col>
+            <Col xl={2}>
+              <label className="mt-2">N° Bathrooms</label>
+              <InputGroup className="mb-3">
+                <Form.Control
+                  type="number"
+                  onChange={(e) => handleRegister("numberOfBathrooms", e)}
+                  defaultValue={filters?.numberOfBathrooms ?? ""}
+                  placeholder="Bathrooms"
+                />
+              </InputGroup>
+            </Col>
+            {/* <Col xl={3} style={{marginTop: "16px"}}>
               <Button variant="info" onClick={() => handleSearch(filters)}>
                 <i className="fa fa-search"></i> Serach
               </Button>
@@ -86,10 +114,12 @@ export const PropertiesSearch = ({ handleSearch, filtered }) => {
                   >
                     <i className="fa fa-redo"></i> Reset
                   </Button>
-            </Col>
+            </Col> */}
           </Row>
         </Form>
-      </Card>
+        </>
+      </ModalSave>
     </>
   );
 };
+export default ModalFilters;

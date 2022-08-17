@@ -1,13 +1,19 @@
 import axios from "axios";
-//import store from "../redux/store";
 
 const baseURL = "http://localhost:8001/api";
 
 const conn = () => {
+  const user = window.localStorage.getItem("user");
+  let Authorization = '';
+  if (user) {
+   const { token } = JSON.parse(user);
+   Authorization = `Bearer ${token}`;
+  }
   return axios.create({
     baseURL,
     headers: {
       "Content-Type": "application/json",
+      Authorization
     },
   });
 };

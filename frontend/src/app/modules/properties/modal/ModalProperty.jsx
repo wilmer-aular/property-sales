@@ -19,7 +19,7 @@ const ModalProperty = ({ property, show, handleShow, handleClose, onSave }) => {
   const onSubmit = async (value) => {
     const save = await onSave(value);
     if (save) {
-      reset();
+      reset(null);
     }
   };
 

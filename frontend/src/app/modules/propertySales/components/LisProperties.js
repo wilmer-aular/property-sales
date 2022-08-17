@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ModalProperty from "./modal/ModalProperty";
-import {PropertiesSearch} from "../../properties/PropertiesSearch"
+import {Filters} from "./Filters"
+
 const LisProperties = ({list, handleFilters, filtered}) => {
 const [entities, setEntities] = useState([])
 const [show, setShow] = useState(false);
@@ -44,7 +45,7 @@ const propsModal = { show, property, handleShow, handleClose };
 	 <ModalProperty {...propsModal} />
 		<section id="properties" className="features features-2" >
 				<div className="container">
-					<div className="row" style={{marginTop:"50px"}}>
+					<div className="row" style={{marginTop:"0px"}}>
 						<div className="col-md-1 col-md-offset-1 col-sm-12"></div>
 						<div className="col-md-10 col-md-offset-1 col-sm-12 text-center">
 							<h4>Find your ideal home</h4>	
@@ -52,7 +53,7 @@ const propsModal = { show, property, handleShow, handleClose };
 							</p>	
 						</div>
 					</div>
-					<PropertiesSearch handleSearch={handleFilters} filtered={filtered}/>
+					<Filters handleSearch={handleFilters} filtered={filtered}/>
 					<div className="row">
 					{
 						entities?.map((i, index) => (

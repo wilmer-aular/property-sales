@@ -5,8 +5,9 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { login } from "@src/services/auth.service";
 import { useNotifyContent } from "@src/providers/NotifyProvider";
 import { required, emailFormat } from "@src/helpers/forms-helper";
+import { setUser } from "@src/services";
 
-export const SignIn = (props) => {
+export const SignIn = () => {
   const { handleNotify } = useNotifyContent();
 
   const {
@@ -17,28 +18,28 @@ export const SignIn = (props) => {
 
   const onSave = async (value) => {
     try {
-      const token = await login(value);
-      console.info({ token });
+      const user = await login(value);
+      setUser(user);
+      window.location.href = `/properties/${user._id}`;
 
       handleNotify();
     } catch (err) {
       console.error(err);
-      handleNotify("Ocurrio un Error", "error");
+      handleNotify("Task Error", "error");
     }
   };
   const handleRegister = (key, require = "") => {
     return register(key, require);
   };
-
   return (
     <>
       <main id="main-container">
         <div className="bg-gd-dusk">
           <div className="hero-static content content-full bg-body-extra-light">
             <div className="py-4 px-1 text-center mb-4">
-              <h1 className="h3 fw-bold mt-5 mb-2">Crear Nuevo Usuario</h1>
+              <h1 className="h3 fw-bold mt-5 mb-2">Get into</h1>
               <h2 className="h5 fw-medium text-muted mb-0">
-                Por favor, añada sus datos...
+              Please, add your details...
               </h2>
             </div>
             <div className="row justify-content-center px-1">
@@ -53,7 +54,7 @@ export const SignIn = (props) => {
                           ...emailFormat,
                         }),
                         errors.email,
-                        "Direccion de Email *",
+                        "Email address *",
                         null,
                         "email"
                       )}
@@ -63,7 +64,7 @@ export const SignIn = (props) => {
                         "password",
                         handleRegister("password", required),
                         errors.password,
-                        "Contraseña * ",
+                        "Password *",
                         null,
                         "password"
                       )}
@@ -74,26 +75,25 @@ export const SignIn = (props) => {
                           <Button
                             title="Editar?"
                             className="btn btn-lg btn-alt-primary w-100 py-3 "
-                            // onClick={handleSubmit(onSave)}
-                          >
-                            Iniciar Sesión
-                          </Button>
-                        </Col>
-                        <Col xs={6} className="pr-1">
-                          <Button
-                            title="Editar?"
-                            className="btn btn-default  btn-hover-secondary btn-secondary btn-sm w-100"
                             onClick={handleSubmit(onSave)}
                           >
-                            Nueva Cuenta
+                             Login
                           </Button>
                         </Col>
-                        <Col xs={6} className="pl-1">
+                        <Col xs={6} >
                           <a
                             className="btn btn-default font-weight-bolder btn-hover-secondary btn-secondary btn-sm w-100"
                             href="/"
                           >
-                            Olvide mi Contraseña
+                            See properties
+                          </a>
+                        </Col>
+                        <Col xs={6} >
+                          <a
+                            className="btn btn-default font-weight-bolder btn-hover-secondary btn-secondary btn-sm w-100"
+                            href="/register"
+                          >
+                            Register
                           </a>
                         </Col>
                       </Row>

@@ -8,6 +8,7 @@ export enum Type {
 interface IProperty extends Document {
   type : Type;
   address : string;
+  userId : string;
   city : string;
   country : string;
   price : number;
@@ -20,6 +21,7 @@ interface IProperty extends Document {
 const PropertySchema: Schema = new Schema({
   type : { type: String, require: true },
   address : { type: String, require: true },
+  userId : { type: String, require: true },
   city : { type: String, require: true },
   country : { type: String, require: true },
   price : { type: Number, require: true },

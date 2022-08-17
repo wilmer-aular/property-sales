@@ -1,8 +1,14 @@
 import React from "react";
 import { useLayoutContent } from "../providers/LayoutProvider";
+import { removeUser, getUser } from "@src/services";
 
 const Header = () => {
   const { showMenu, setShowMenu } = useLayoutContent();
+  const user = getUser();
+ const signOut = () =>{
+      removeUser();
+      window.location.href = '/auth';
+  }
   return (
     <>
       <header id="page-header">
@@ -15,15 +21,12 @@ const Header = () => {
             >
               <i className="fa fa-navicon"></i>
             </button>
-            <button type="button" className="btn btn-dual-secondary">
-              <i className="fa fa-search"></i>{" "}
-              <span className="ml-10">Buscar</span>
-            </button>
           </div>
           <div className="content-header-section">
-            <button className="btn btn-rounded btn-dual-secondary">
+            <span className="mr-3">Hi {user.userName}</span>
+            <button onClick={()=> signOut()} className="btn btn-rounded btn-dual-secondary">
               <i className="fa fa-user d-sm-none"></i>
-              Inquieta
+              Sign Out
             </button>
           </div>
           {/* <div className="content-header-section">

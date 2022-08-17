@@ -6,9 +6,10 @@
  */
 
 import React from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 import { Layout } from "./layout/Layout";
 import BasePage from "./BasePage";
+import { getUser } from '../services';
 import { PropertySales } from "./pages/PropertySales";
 
 import { SignUp, SignIn } from "./pages";
@@ -17,22 +18,22 @@ import { LayoutProvider } from "./providers/LayoutProvider";
 
 export function Routes() {
   const location = useLocation();
-  const isAuthorized = true;
+  const user = getUser();
+  
+  const isAuthorized = user !== null && user !== undefined;
   return (
     <>
     {
-      location.pathname === "/properties_sell" ?
-      (
-        <Route
-          path="/properties_sell"
-          component={PropertySales}
-        />)
-        :
+      location.pathname === "/" ? <Route path="/" component={PropertySales}/> :
         (
           <Switch>
+              <Route path="/auth" component={SignIn}/>
+              <Route path="/register" component={SignUp} />
             {!isAuthorized ? (
               /*Render auth page when user at `/auth` and not authorized.*/
-              <Route path="/" component={SignIn} />
+              <>
+                <Redirect to="/auth"/>
+                </>
             ) : (
               /*Otherwise redirect to root page (`/`)*/
               <LayoutProvider>
@@ -41,13 +42,8 @@ export function Routes() {
                 </Layout>
               </LayoutProvider>
             )}
-
-            {/* <Route path="/registrar" component={SignUp} />
-            */}
           </Switch>
-        )
-    }
-     
+        )}
     </>
   );
 }
