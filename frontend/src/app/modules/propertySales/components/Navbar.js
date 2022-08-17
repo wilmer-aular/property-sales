@@ -16,14 +16,8 @@ const Navbar = () => {
 							
 							<div className="col-md-7 text-center col-md-pull-3  col-xs-12">
 								<ul className="menu">
+									<li><a className="inner-link" href="#properties"> Properties</a></li>
 									<li><a className="inner-link" href="#testimonials">	Testimonials</a></li>
-									<li className="has-dropdown"><a href="#home">Services</a>
-										<ul className="subnav">
-											<li className="has-dropdown"><a target="blank" href="https://www.propiertiesSell.ca/moving/estimate/">Estimate</a></li>
-											<li><a  target="blank" href="https://www.propiertiesSell.ca/aboutUs/">	Delivery</a></li>
-											<li><a  target="blank" href="https://www.propiertiesSell.ca/storage-units/">	Storage</a></li>
-										</ul>
-									</li>
 								</ul>
 							</div>
 						</div>
