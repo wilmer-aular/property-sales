@@ -2,7 +2,7 @@
 
 Recomendado `MongoDB shell version v4.4.13`
 
-Recomendado `Node v12.19.0`
+Recomendado `Node v14.17.6`
 
 # App Properties Sell
 
@@ -10,7 +10,7 @@ Para Correr la APP en un entorno local, por favor seguir los siguientes [PASOS]:
 
 1) Configurar Mongo
 
-## Inicie el interprete de mongo con: `mongo`;
+## Inicie el interprete de mongo;
 
 ## cree la base de datos con: `use propertySales`;
 

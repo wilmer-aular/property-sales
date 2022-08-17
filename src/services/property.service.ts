@@ -6,19 +6,23 @@ export class PropertyService extends CrudService<IProperty> {
     super(Property);
   }
   public async viewStock(): Promise<any> {
-    const [houses, apartaments] = await Promise.all([super.find({type:'House'}), super.find({type: 'Apartments'})])
+    const [houses, apartaments, office] = await Promise.all([super.find({type:'House'}), super.find({type: 'Apartments'}), super.find({type: 'Office'})])
+
     return [
       {
         id:1, 
         type:'House', 
         stock: houses.length, 
-        assessment: `$ ${houses?.reduce((a:IProperty, b: IProperty)=> a.price + b.price)}`
       }
       ,{
         id: 2, 
         type: 'Apartaments', 
         stock: apartaments.length, 
-        assessment: `$ ${apartaments?.reduce((a:IProperty, b: IProperty)=> a.price + b.price)}`
+      }
+      ,{
+        id: 3, 
+        type: 'Office', 
+        stock: office.length, 
       }
     ];
   } 
