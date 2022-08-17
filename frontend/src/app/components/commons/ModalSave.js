@@ -49,7 +49,7 @@ const ModalSave = ({
     <>
       <Button
         icon={iconButtom}
-        title={titleButton}
+        titleMsj={titleButton}
         styleIcon={iconColor}
         styleButtom={styleButtom}
         disabled={disabled}

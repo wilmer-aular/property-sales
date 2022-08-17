@@ -70,13 +70,13 @@ export const Filters = ({ handleSearch, filtered }) => {
                 />
               </InputGroup>
             </Col>
-            <Col xl={2} style={{marginTop: "16px"}}>
-              <span title="Apply filters" className=" btn-text-dark btn-hover-warning btn-icon mr-2" 
+            <Col xl={3} style={{marginTop: "16px", textAlign: "center"}} >
+              <span title="Apply filters" className="btn btn-sm btn-default btn-text-success btn-hover-warning btn-icon mr-2" 
               onClick={() => handleSearch(filters)}
               >
                 <i className="fa fa-search  text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
               </span>
-              <span onClick={() => reset()} title="Reset filters" className=" btn-text-dark btn-hover-warning btn-icon ml-5 mr-5" >
+              <span onClick={() => reset()} title="Reset filters" className="btn btn-sm btn-default btn-text-success btn-hover-warning btn-icon mr-2" >
                 <i className="fa fa-redo text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
               </span>
               <ModalFilters {...propsModal}/>

@@ -20,7 +20,7 @@ export function Routes() {
   const location = useLocation();
   const user = getUser();
   
-  const isAuthorized = user !== null && user !== undefined;
+  const isAuthorized = user?.token !== null && user?.token !== undefined;
   return (
     <>
     {

@@ -27,10 +27,12 @@ const ModalFilters = ({ show, handleShow, handleClose, handleSearch, filters, se
         variant="primary"
         deleteText="Close"
         variantDelete="danger"
-        titleButton="advanced filters"
+        iconColor="text-dark"
+        titleButton="Advanced filters"
         saveText="Apply filters"
         variantButtom="default"
-        classButtom={"btn-hover-primary btn-primary btn-sm"}
+        iconButtom="filter"
+        classButtom={"btn btn-sm btn-default btn-text-primary btn-hover-warning btn-icon mr-2"}
         {...propsModal}
       >
         <>
@@ -131,18 +133,6 @@ const ModalFilters = ({ show, handleShow, handleClose, handleSearch, filters, se
                 />
               </InputGroup>
             </Col>
-            {/* <Col xl={3} style={{marginTop: "16px"}}>
-              <Button variant="info" onClick={() => handleSearch(filters)}>
-                <i className="fa fa-search"></i> Serach
-              </Button>
-                  <Button
-                    variant="info"
-                    className="ml-3"
-                    onClick={() => reset()}
-                  >
-                    <i className="fa fa-redo"></i> Reset
-                  </Button>
-            </Col> */}
           </Row>
         </Form>
         </>

@@ -45,5 +45,3 @@ Ya hay un usuario previo creado con propiedades
 
 ## email : `wilmeraular16@gmail.com`
 ## password : `1234`
-
-Para crear un usuario valla a register y cree un usuario y administre sus propiedades.

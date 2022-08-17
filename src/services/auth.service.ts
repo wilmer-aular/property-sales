@@ -48,7 +48,7 @@ export class AuthService {
   public async signIn(user: IModelUSer): Promise<any> {
     try {
       const userDb = await this.service.findOne({email: user.email});
-      if (!userDb) return { message: "unvalid user" };
+      if (!userDb) return { message: "Invalid user" };
 
       const comparePwd = await comparePassword(userDb.password, user.password);
       if (!comparePwd) return { message: "Invalid password" };

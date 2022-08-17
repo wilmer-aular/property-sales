@@ -12,14 +12,24 @@ export const SignIn = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
 
   const onSave = async (value) => {
     try {
       const user = await login(value);
+      if(user?.message){
+        handleNotify(user?.message, "warn");
+        const reset = user.message === 'Invalid password' ? 'password' : 'email';
+        setValue(reset, '');
+        return;
+      }
       setUser(user);
-      window.location.href = `/properties`;
+      if(user?.token) {
+        window.location.href = `/properties`;
+      }
+      
       handleNotify();
     } catch (err) {
       console.error(err);
