@@ -12,37 +12,35 @@ Para Correr la APP en un entorno local, por favor seguir los siguientes [PASOS]:
 
 ## Inicie el interprete de mongo;
 
-## cree la base de datos con: `use propertySales`;
+## Crear la base de datos con: `use propertySales`;
 
-## configure los permisos con el siguiente comando :
+## Configurar los permisos con el siguiente comando :
 
 `db.createUser({ user: "admin", pwd: "admin",  roles: [ { role:"dbAdmin", db: "propertySales" } ] });`
 
-2) configuracion del proyecto: 
+2) Configuracion del proyecto: 
 
 Ingrese a la raíz del proyecto
 
- ### Ejectuete  `mkdir build`
- ### Ejectuete  `npm i`
+ ### Ejectuetar  `mkdir build`
+ ### Ejectuetar  `npm i`
 
 Ingrese a la carpeta frontend con `cd frontend`
 
- ### Ejectute  `npm i`
+ ### Ejectutar  `npm i`
 
- Luego retrosceda a la carpeta raíz `cd ../`
+ Luego retroceder a la carpeta raíz `cd ../`
 
  ### Ejectute `npm run all`
  ## Asegurese de que el servidor este corriendo en el puerto `8001`
 
 
- 3)Acceda a la APP:
+ 3)Acceder a la APP con:
 ## http://localhost:8001
 
-Para acceder y administrar sus propiedades acceda por la barra de navegacion `Post`
+Para administrar las propiedades acceda desde barra de navegacion `Post`
 
-vaya a login y acceda con: 
-
-Ya hay un usuario previo creado con propiedades
+clickee en login y acceda con: 
 
 ## email : `wilmeraular16@gmail.com`
 ## password : `1234`
