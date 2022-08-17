@@ -6,7 +6,7 @@ class CrudService<T extends Document> {
   constructor(readonly model: Model<T>) {}
 
   async all(): Promise<T[]> {
-    return await this.model.find({});
+    return await this.model.find({}).sort({ price: 1 });
   }
 
   async byId(id: String): Promise<T> {
@@ -48,7 +48,7 @@ class CrudService<T extends Document> {
     }
     return this.model
       .find(query)
-      .sort({ createdDate: -1 })
+      .sort({ price: 1 })
       .exec();
   }
   async findOne(query: any): Promise<T> {
