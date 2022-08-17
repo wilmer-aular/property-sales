@@ -2,8 +2,6 @@ import { Model, Document } from "mongoose";
 import { UploadedFile } from "express-fileupload";
 import { saveImage, IFileResponse } from "./file.service";
 
-
-
 class CrudService<T extends Document> {
   constructor(readonly model: Model<T>) {}
 

@@ -5,7 +5,6 @@ export enum Type {
   House = "House",
   Apartments = "Apartments",
   Office = "Office",
-  Terrain = "Terrain",
 }
 interface IProperty extends Document {
   type : Type;

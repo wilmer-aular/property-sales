@@ -24,7 +24,6 @@ const handleDetail = (id) => {
 		let countHome = 0;
 		let countApart = 0;
 		let countOffice = 0;
-		let countTerrain = 0;
 		const entities = list.map((i) => {
 			if(i.type === 'House'){
 				if(countHome === 33) countHome = 0;
@@ -35,15 +34,10 @@ const handleDetail = (id) => {
 				i.imgUrl = `media/images/${i.type}/${countApart}.jpg`;
 				countApart += 1;
 			}
-			else if (i.type === 'Office') {
-				if(countOffice === 33) countOffice = 0;
+			else {
+				if(countOffice === 5) countOffice = 0;
 				i.imgUrl = `media/images/${i.type}/${countOffice}.jpg`;
 				countOffice += 1;
-			}
-			else {
-				if(countTerrain === 33) countTerrain = 0;
-				i.imgUrl = `media/images/${i.type}/${countTerrain}.jpg`;
-				countTerrain += 1;
 			}
 			return i;
 		})
