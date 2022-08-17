@@ -21,7 +21,6 @@ const Navbar = () => {
 									<li className="has-dropdown"><a href="#home">Post</a>
 										<ul className="subnav">
 											<li className="has-dropdown"><a target="blank" href="/auth">	Login</a></li>
-											<li><a  target="blank" href="/register">Register</a></li>
 										</ul>
 									</li>
 								</ul>

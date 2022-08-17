@@ -9,7 +9,6 @@ import { setUser } from "@src/services";
 
 export const SignIn = () => {
   const { handleNotify } = useNotifyContent();
-
   const {
     register,
     handleSubmit,
@@ -20,8 +19,7 @@ export const SignIn = () => {
     try {
       const user = await login(value);
       setUser(user);
-      window.location.href = `/properties/${user._id}`;
-
+      window.location.href = `/properties`;
       handleNotify();
     } catch (err) {
       console.error(err);
@@ -80,7 +78,7 @@ export const SignIn = () => {
                              Login
                           </Button>
                         </Col>
-                        <Col xs={6} >
+                        <Col xs={12} >
                           <a
                             className="btn btn-default font-weight-bolder btn-hover-secondary btn-secondary btn-sm w-100"
                             href="/"
@@ -88,14 +86,14 @@ export const SignIn = () => {
                             See properties
                           </a>
                         </Col>
-                        <Col xs={6} >
+                        {/* <Col xs={6} >
                           <a
                             className="btn btn-default font-weight-bolder btn-hover-secondary btn-secondary btn-sm w-100"
                             href="/register"
                           >
                             Register
                           </a>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </Col>
                   </Container>

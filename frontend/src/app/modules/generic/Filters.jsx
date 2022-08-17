@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Form, Row, Col, InputGroup, Button } from "react-bootstrap";
-import {listType} from "../../properties/util"
+import { Form, Row, Col, InputGroup } from "react-bootstrap";
+import {listType} from "../properties/util"
+import ModalFilters from "./ModalFilters"
 
 export const Filters = ({ handleSearch, filtered }) => {
   const [filters, setFilters] = useState({});
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => { setShow(false) };
 
   const handleRegister = (type, e) => {
     let filter = e.target.value ? { [type]: e.target.value } : {};
@@ -11,24 +15,29 @@ export const Filters = ({ handleSearch, filtered }) => {
     setFilters({ ...filters, ...filter });
   };
 
+  const filterForType = (filter) => {
+    const newFilter = { ...filters, ...filter }
+    setFilters({...newFilter});
+    handleSearch(newFilter)
+  }
+
   const reset = () => {
     setFilters({});
     handleSearch(null);
   };
+  const propsModal = { show, handleShow, handleClose, handleSearch, filters, setFilters};
 
   useEffect(() => {}, [filters, filtered]);
   return (
     <>
-          <Row style={{marginBottom : "50px"}}>
+        <Row style={{marginBottom : "50px"}}>
           <Col xl={3}>
               <label className="mt-2">Type of property</label>
               <InputGroup className="mb-3">
                 <Form.Control
                   as="select"
-                  onChange={(e) => {
-                    handleSearch({ type: e.target.value });
-                  }}
-                  defaultValue={filters?.type ?? ""}
+                  onChange={(e) => filterForType({ type: e.target.value })}
+                  value={filters?.type ?? ""}
                 >
                   <option key={""}></option>
                   {listType?.map((i) => (
@@ -45,7 +54,7 @@ export const Filters = ({ handleSearch, filtered }) => {
                 <Form.Control
                   type="text"
                   onChange={(e) => handleRegister("country", e)}
-                  defaultValue={filters?.country ?? ""}
+                  value={filters?.country ?? ""}
                   placeholder="Country"
                 />
               </InputGroup>
@@ -56,32 +65,21 @@ export const Filters = ({ handleSearch, filtered }) => {
                 <Form.Control
                   type="text"
                   onChange={(e) => handleRegister("city", e)}
-                  defaultValue={filters?.city ?? ""}
+                  value={filters?.city ?? ""}
                   placeholder="City"
                 />
               </InputGroup>
             </Col>
-            <Col xl={2}>
-              <label className="mt-2">Price</label>
-              <InputGroup className="mb-3">
-                <Form.Control
-                  type="number"
-                  onChange={(e) => handleRegister("price", e)}
-                  defaultValue={filters?.price ?? ""}
-                  placeholder="Price"
-                />
-              </InputGroup>
-            </Col>
             <Col xl={2} style={{marginTop: "16px"}}>
-              <span title="Apply filters" className=" btn-text-dark btn-hover-warning btn-icon mr-2" >
+              <span title="Apply filters" className=" btn-text-dark btn-hover-warning btn-icon mr-2" 
+              onClick={() => handleSearch(filters)}
+              >
                 <i className="fa fa-search  text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
               </span>
               <span onClick={() => reset()} title="Reset filters" className=" btn-text-dark btn-hover-warning btn-icon ml-5 mr-5" >
                 <i className="fa fa-redo text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
               </span>
-              <span onClick={() => reset()} title="Reset filters" className=" btn-text-dark btn-hover-warning btn-icon" >
-                <i className="fa fa-filter text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
-              </span>
+              <ModalFilters {...propsModal}/>
             </Col>
           </Row>
     </>

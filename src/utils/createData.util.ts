@@ -17,11 +17,7 @@ const createData = async () => {
     
     const properties = await propertyService.all();
     if(!properties.length){
-        const newProperties = listProperties.map(i => {
-            i.userId = userDb._id.toString();
-            return i;
-        })
-        await propertyService.bulkCreate(newProperties);
+        await propertyService.bulkCreate(listProperties);
     }
 }
 

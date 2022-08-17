@@ -14,7 +14,6 @@ export const listProperties = [
     price: 120000,
     numberOfRooms: 5,
     numberOfBathrooms: 3,
-    userId:''
 },
 {
     type: 'Apartments',
@@ -24,7 +23,6 @@ export const listProperties = [
     price: 85000,
     numberOfRooms: 3,
     numberOfBathrooms: 2,
-    userId:''
 },
 {
     type: 'House',
@@ -34,7 +32,6 @@ export const listProperties = [
     price: 45000,
     numberOfRooms: 4,
     numberOfBathrooms: 2,
-    userId:''
 },
 {
     type: 'Apartments',
@@ -44,7 +41,6 @@ export const listProperties = [
     price: 110000,
     numberOfRooms: 4,
     numberOfBathrooms: 2,
-    userId:''
 },
 {
     type: 'House',
@@ -54,7 +50,6 @@ export const listProperties = [
     price: 60000,
     numberOfRooms: 3,
     numberOfBathrooms: 2,
-    userId:''
 },
 {
     type: 'Apartments',
@@ -64,6 +59,5 @@ export const listProperties = [
     price: 40000,
     numberOfRooms: 2,
     numberOfBathrooms: 1,
-    userId:''
 },
 ]

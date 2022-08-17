@@ -9,13 +9,12 @@ const router = Router();
 
 const supplyRouter = (router: Router) => {
   const controller = new PropertyController();
-  
-  router.get('/forUser/:userId', 
+
+  router.get('/viewStock', 
   //[authValidation, Context.setup, logRequest],
   (req: Request, res: Response) => {
-    controller.forUser(req, res);
+    controller.viewStock(req, res);
   });
- 
 
   crudRouter<IProperty, PropertyService, PropertyController>(
     router,

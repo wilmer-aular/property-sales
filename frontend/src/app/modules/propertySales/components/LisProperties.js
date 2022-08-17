@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ModalProperty from "./modal/ModalProperty";
-import {Filters} from "./Filters"
+import {Filters} from "../../generic/Filters"
 
 const LisProperties = ({list, handleFilters, filtered}) => {
 const [entities, setEntities] = useState([])
@@ -36,6 +36,8 @@ const handleDetail = (id) => {
 			return i;
 		})
 		setEntities(entities);
+	}else {
+		setEntities([]);
 	}
   },[list, setEntities])
 

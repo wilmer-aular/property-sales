@@ -8,9 +8,8 @@ class PropertyController extends CrudController<IProperty, PropertyService> {
     super(new PropertyService(), "property");
     
   }
-  async forUser(req: Request, res: Response): Promise<any> {
-    const {userId} = req.params;
-    resolver(this.service.forUser(userId), res);
+  async viewStock(req: Request, res: Response): Promise<any> {
+    resolver(this.service.viewStock(), res);
   }
 }
 
