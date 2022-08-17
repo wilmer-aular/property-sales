@@ -61,7 +61,8 @@ const propsModal = { show, property, handleShow, handleClose };
 								</>
 							</div>
 							<div onClick={()=>handleDetail(i._id)}>
-								<h5  style={{fontSize: 'inherit', cursor: "pointer"}}><strong>{i.type}</strong> in {i.country}, {i.city}.</h5>
+								<h5  style={{fontSize: 'inherit', cursor: "pointer"}}><strong>{i.type}</strong> in {i.country}.</h5>
+								<h5  style={{fontSize: '14px', cursor: "pointer"}}>{i.city}.</h5>
 								<span style={{fontSize: 'inherit', cursor: "pointer"}}>$ {i.price}.</span>
 							</div>
 							
