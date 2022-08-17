@@ -22,6 +22,7 @@ Para Correr la APP en un entorno local, por favor seguir los siguientes [PASOS]:
 
 Ingrese a la raíz del proyecto
 
+ ### Ejectuete  `mkdir build`
  ### Ejectuete  `npm i`
 
 Ingrese a la carpeta frontend con `cd frontend`
