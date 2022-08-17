@@ -36,6 +36,9 @@ class CrudService<T extends Document> {
     const data = await this.model.findOne(query).exec();
     return withId(data);
   }
+  async bulkCreate(data: any[]): Promise<any> {
+    return await this.model.collection.insertMany(data);
+  }
   async upload(
     model: string,
     image: UploadedFile,

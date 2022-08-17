@@ -6,7 +6,7 @@ import cors from "cors";
 import mongoConnect from "./environment/mongo.connect.ts";
 import fileUpload from "express-fileupload";
 import path from 'path';
-
+import  createData  from "./utils/createData.util"
 export class Server {
   app: Express;
 
@@ -24,10 +24,11 @@ export class Server {
     this.app.get('*', (req, res) => {
       res.sendFile(path.resolve('./') + '/build/index.html');
     });
-
+    
     mongoConnect();
+    createData();
   }
-
+  
   start(port: number): void {
     this.app.listen(port, () => {
       console.info(`Server running on port ${port}`);

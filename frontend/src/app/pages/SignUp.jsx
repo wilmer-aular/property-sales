@@ -30,7 +30,6 @@ export const SignUp = () => {
     try {
        const user = await signUp(value);
       setUser(user);
-      console.log({user});
       window.location.href = `/properties/${user._id}`;
       handleNotify();
     } catch (err) {
