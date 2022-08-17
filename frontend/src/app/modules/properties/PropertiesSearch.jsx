@@ -77,7 +77,7 @@ export const PropertiesSearch = ({ handleSearch, filtered }) => {
             </Col>
             <Col xl={3} style={{marginTop: "16px"}}>
               <Button variant="info" onClick={() => handleSearch(filters)}>
-                <i className="fa fa-search"></i> Serach
+                <i className="fa fa-search"></i> Search
               </Button>
                   <Button
                     variant="info"

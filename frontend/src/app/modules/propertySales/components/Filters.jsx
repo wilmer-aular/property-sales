@@ -19,9 +19,8 @@ export const Filters = ({ handleSearch, filtered }) => {
   useEffect(() => {}, [filters, filtered]);
   return (
     <>
-        <Form>
-          <Row>
-          <Col xl={2}>
+          <Row style={{marginBottom : "50px"}}>
+          <Col xl={3}>
               <label className="mt-2">Type of property</label>
               <InputGroup className="mb-3">
                 <Form.Control
@@ -40,7 +39,7 @@ export const Filters = ({ handleSearch, filtered }) => {
                 </Form.Control>
               </InputGroup>
             </Col>
-            <Col xl={2}>
+            <Col xl={3}>
               <label className="mt-2">Country</label>
               <InputGroup className="mb-3">
                 <Form.Control
@@ -73,42 +72,18 @@ export const Filters = ({ handleSearch, filtered }) => {
                 />
               </InputGroup>
             </Col>
-            <Col xl={2}>
-              <label className="mt-2">N° Bedrooms</label>
-              <InputGroup className="mb-3">
-                <Form.Control
-                  type="number"
-                  onChange={(e) => handleRegister("numberOfRooms", e)}
-                  defaultValue={filters?.numberOfBathrooms ?? ""}
-                  placeholder="Bedrooms"
-                />
-              </InputGroup>
+            <Col xl={2} style={{marginTop: "16px"}}>
+              <span title="Apply filters" className=" btn-text-dark btn-hover-warning btn-icon mr-2" >
+                <i className="fa fa-search  text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
+              </span>
+              <span onClick={() => reset()} title="Reset filters" className=" btn-text-dark btn-hover-warning btn-icon ml-5 mr-5" >
+                <i className="fa fa-redo text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
+              </span>
+              <span onClick={() => reset()} title="Reset filters" className=" btn-text-dark btn-hover-warning btn-icon" >
+                <i className="fa fa-filter text-muted mx-2 cursor-pointer" style={{display: 'contents', cursor: 'pointer'}}></i> 
+              </span>
             </Col>
-            <Col xl={2}>
-              <label className="mt-2">N° Bathrooms</label>
-              <InputGroup className="mb-3">
-                <Form.Control
-                  type="number"
-                  onChange={(e) => handleRegister("numberOfBathrooms", e)}
-                  defaultValue={filters?.numberOfBathrooms ?? ""}
-                  placeholder="Bathrooms"
-                />
-              </InputGroup>
-            </Col>
-            {/* <Col xl={3} style={{marginTop: "16px"}}>
-              <Button variant="info" onClick={() => handleSearch(filters)}>
-                <i className="fa fa-search"></i> Serach
-              </Button>
-                  <Button
-                    variant="info"
-                    className="ml-3"
-                    onClick={() => reset()}
-                  >
-                    <i className="fa fa-redo"></i> Reset
-                  </Button>
-            </Col> */}
           </Row>
-        </Form>
     </>
   );
 };
