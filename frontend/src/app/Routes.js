@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import { Switch, Route, useLocation, Redirect } from "react-router-dom";
+import { Switch, Route, useLocation, Redirect, useHistory } from "react-router-dom";
 import { Layout } from "./layout/Layout";
 import BasePage from "./BasePage";
 import { getUser } from '../services';
@@ -17,10 +17,15 @@ import { SignUp, SignIn } from "./pages";
 import { LayoutProvider } from "./providers/LayoutProvider";
 
 export function Routes() {
+  const history = useHistory();
   const location = useLocation();
   const user = getUser();
   
   const isAuthorized = user?.token !== null && user?.token !== undefined;
+
+  if( location.pathname === "/auth" && isAuthorized ){
+    history.push('/properties');
+  }
   return (
     <>
     {
