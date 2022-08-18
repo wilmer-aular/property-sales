@@ -13,7 +13,7 @@ export const getListWithImage = (list) => {
 				countApart += 1;
 			}
 			else {
-				if(countOffice === 5) countOffice = 0;
+				if(countOffice === 4) countOffice = 0;
 				i.imgUrl = `media/images/${i.type}/${countOffice}.jpg`;
 				countOffice += 1;
 			}
